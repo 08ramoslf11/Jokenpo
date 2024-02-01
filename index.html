@@ -65,7 +65,7 @@
             <div class="col-4 jogo ">
                 <h2>Jogador 1</h2>
                 <div class="col-4.5 ">
-                    <button onclick="Jokepo(1, 'pedra')">Pedra</button>
+                    <button onclick="Jokepo(1, 'Pedra')">Pedra</button>
                 </div>
 
                 <div class="col-4.5 ">
@@ -77,8 +77,7 @@
                 </div>
             </div>
             <div class="col-4 escolha text-center" >
-                <img src="assets/potno.png" alt="Quem Venceu" height="110" width="100">
-                <img src="assets/ponto.png" alt="Quem Venceu" height="110" width="100">
+                <h1 id="mensagemVencedor"></h1>
             </div>
             <div class="col-4 jogo2 text-end">
                 <h2>Jogador 2</h2>
@@ -100,10 +99,40 @@
 </body>
 
 <script>
+    var escolhaJogador1 = "";
+    var escolhaJogador2 = "";
 
-function Jokepo(jogador, jogada) {
-    
-}
+    function Jokepo(numeroJogador, opcao)
+    {
+        if (numeroJogador == 1)
+        {
+            escolhaJogador1 = opcao;
+        } else {
+            escolhaJogador2 = opcao;
+            //Verificar o ganhador
+            if (
+                (escolhaJogador1 == 'Pedra' && escolhaJogador2 == 'Tesoura') ||
+                (escolhaJogador1 == 'Papel' && escolhaJogador2 == 'Pedra') ||
+                (escolhaJogador1 == 'Tesoura' && escolhaJogador2 == 'Papel') 
+               )
+            {
+                document.getElementById('mensagemVencedor').innerHTML =
+                    'Jogador 1 venceu';
+            }
+            else if (
+                (escolhaJogador2 == 'Pedra' && escolhaJogador1 == 'Tesoura') ||
+                (escolhaJogador2 == 'Papel' && escolhaJogador1 == 'Pedra') ||
+                (escolhaJogador2 == 'Tesoura' && escolhaJogador1 == 'Papel') 
+               )
+            {
+                document.getElementById('mensagemVencedor').innerHTML =
+                    'Jogador 2 venceu';
+            } else {
+                document.getElementById('mensagemVencedor').innerHTML =
+                    'Empate';
+            }
+        }
+    }
 </script>
 
 </html>
